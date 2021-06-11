@@ -1,0 +1,15 @@
+"use strict";
+exports.__esModule = true;
+var Queue_1 = require("./Queue");
+var queue = new Queue_1.Queue();
+queue.push('First job');
+queue.push('Second job');
+queue.push('Third job');
+queue.push('Fourth job');
+queue.push('Fifth job');
+queue.print();
+queue.pop();
+queue.print();
+console.log('Current Item', queue.peek());
+queue.push('Sixth job');
+queue.print();
