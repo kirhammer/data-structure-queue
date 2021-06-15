@@ -1,6 +1,6 @@
 class SinglyNode {
   value: any
-  previous: SinglyNode
+  previous: SinglyNode = undefined
 
   constructor(value: any){
     this.value =  value
@@ -84,6 +84,60 @@ class SinglyLinkedList {
   }
 
   /**
+   * Removes head from list
+   */
+  popHead(){
+    this.head = this.head.previous
+    this.size--
+  }
+
+  popTail(){
+    if(this.size < 0) throw Error('Singly lined list is empty')
+
+    if(this.size === 1){
+      this.head = undefined
+      this.tail = undefined
+      this.size--
+      return
+    }
+
+    let node = this.head
+    let position = 0
+
+    //Stops 1 node before required index
+    while(position < (this.size - 2)){
+      node = node.previous
+      position++
+    }
+    
+    node.previous = undefined
+    this.tail = node
+    
+    this.size--
+  }
+
+  delete(index: number) {
+    //Index out of range
+    if(index < 0 || index >= this.size) throw Error("Index out of range")
+
+    //Pop head
+    if(index === 0) return this.popHead()
+
+    //Pop specific node or tail
+    let node = this.head
+    let position = 0
+
+    //Stops 1 node before required index
+    while(position < (index - 1)){
+      node = node.previous
+      position++
+    }
+    
+    node.previous = node.previous.previous
+    this.size--
+  }
+
+  /**
    * Inserts a new node at the head of list
    * 
    * @param value New node value
@@ -93,6 +147,9 @@ class SinglyLinkedList {
     let string: string = ''
     let node = this.head
     let flag = true
+
+    //Empty list
+    if(this.size === 0 ) return string
 
     while(flag){
       string+= ` | ${node.value}`
@@ -121,4 +178,16 @@ console.log('List', list.toString(), 'Size: ', list.size)
 list.pushToTail("Fourht")
 list.insert("Third", 2)
 
+console.log('List', list.toString(), 'Size: ', list.size)
+
+list.popHead()
+console.log('List', list.toString(), 'Size: ', list.size)
+
+list.delete(list.size-1)
+console.log('List', list.toString(), 'Size: ', list.size)
+
+list.popTail()
+console.log('List', list.toString(), 'Size: ', list.size)
+
+list.popTail()
 console.log('List', list.toString(), 'Size: ', list.size)
