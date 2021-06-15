@@ -4,7 +4,7 @@ This project implements a few data structures as Typescript classes. Some of the
 
 ## Compile
 
-**src** folder can be compiled to Javascript, through **@babel/preset-typescript**, to **lib** folder through the following command:
+**src** folder can be compiled to Javascript, through **@babel/preset-typescript**. Output files are saved in **lib**. To compile, run the following command:
 
  ```bash
  node run compile
