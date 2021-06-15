@@ -73,6 +73,9 @@ var SinglyLinkedList = /** @class */ (function () {
         this.head = this.head.previous;
         this.size--;
     };
+    /**
+   * Removes tail from list
+   */
     SinglyLinkedList.prototype.popTail = function () {
         if (this.size < 0)
             throw Error('Singly lined list is empty');
@@ -93,6 +96,10 @@ var SinglyLinkedList = /** @class */ (function () {
         this.tail = node;
         this.size--;
     };
+    /**
+     * Removes specified node from list
+     * @param index Index of node to me removed
+     */
     SinglyLinkedList.prototype["delete"] = function (index) {
         //Index out of range
         if (index < 0 || index >= this.size)
@@ -110,6 +117,22 @@ var SinglyLinkedList = /** @class */ (function () {
         }
         node.previous = node.previous.previous;
         this.size--;
+    };
+    /**
+     *
+     * @param value Value to be searched
+     * @returns
+     */
+    SinglyLinkedList.prototype.search = function (index) {
+        if (index < 0 || index >= this.size)
+            throw Error("Index out of range");
+        var node = this.head;
+        var position = 0;
+        while (position < index) {
+            node = node.previous;
+            position++;
+        }
+        return node;
     };
     /**
      * Inserts a new node at the head of list
@@ -142,6 +165,7 @@ console.log('List', list.toString(), 'Size: ', list.size);
 list.pushToTail("Fourht");
 list.insert("Third", 2);
 console.log('List', list.toString(), 'Size: ', list.size);
+console.log("Item 2: ", list.search(6));
 list.popHead();
 console.log('List', list.toString(), 'Size: ', list.size);
 list["delete"](list.size - 1);

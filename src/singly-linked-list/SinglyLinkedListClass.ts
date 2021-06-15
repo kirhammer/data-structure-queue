@@ -145,6 +145,25 @@ class SinglyLinkedList {
   }
 
   /**
+   * 
+   * @param value Value to be searched
+   * @returns 
+   */
+  search(index: number){
+    if(index < 0 || index >= this.size) throw Error("Index out of range")
+
+    let node = this.head
+    let position = 0
+
+    while(position < index){
+      node = node.previous
+      position++
+    }
+
+    return node
+  }
+
+  /**
    * Inserts a new node at the head of list
    * 
    * @param value New node value
@@ -186,6 +205,8 @@ list.pushToTail("Fourht")
 list.insert("Third", 2)
 
 console.log('List', list.toString(), 'Size: ', list.size)
+
+console.log("Item 2: ", list.search(2))
 
 list.popHead()
 console.log('List', list.toString(), 'Size: ', list.size)
