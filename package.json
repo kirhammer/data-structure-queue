@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "example-class": "tsc src/queue-class/example.ts -outDir compiled/queue-class && node compiled/queue-class/example.js",
-    "example-function": "tsc src/queue-function/example.ts -outDir compiled/queue-function && node compiled/queue-function/example.js"
+    "example-function": "tsc src/queue-function/example.ts -outDir compiled/queue-function && node compiled/queue-function/example.js",
+    "singly-list": "tsc src/singly-linked-list/SinglyLinkedListClass.ts -outDir compiled/singly-linked-list && node compiled/singly-linked-list/SinglyLinkedListClass.js"
   },
   "keywords": [],
   "author": "",
