@@ -91,6 +91,9 @@ class SinglyLinkedList {
     this.size--
   }
 
+    /**
+   * Removes tail from list
+   */
   popTail(){
     if(this.size < 0) throw Error('Singly lined list is empty')
 
@@ -116,6 +119,10 @@ class SinglyLinkedList {
     this.size--
   }
 
+  /**
+   * Removes specified node from list
+   * @param index Index of node to me removed
+   */
   delete(index: number) {
     //Index out of range
     if(index < 0 || index >= this.size) throw Error("Index out of range")
