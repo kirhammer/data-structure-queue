@@ -4,12 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "./node_modules/.bin/babel --extensions '.ts' src --out-dir lib",
+    "test": "jest --verbose --coverage ./tests/singly-linked-list.test.ts",
     "example-class": "tsc src/queue-class/example.ts -outDir compiled/queue-class && node compiled/queue-class/example.js",
     "example-function": "tsc src/queue-function/example.ts -outDir compiled/queue-function && node compiled/queue-function/example.js",
     "singly-list": "tsc src/singly-linked-list/SinglyLinkedListClass.ts -outDir compiled/singly-linked-list && node compiled/singly-linked-list/SinglyLinkedListClass.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/jest": "^26.0.23",
+    "babel-jest": "^27.0.2",
+    "jest": "^27.0.4"
+  }
 }

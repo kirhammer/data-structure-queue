@@ -7,7 +7,7 @@ class SinglyNode {
   }
 }
 
-class SinglyLinkedList {
+export class SinglyLinkedList {
   head: SinglyNode
   tail: SinglyNode
   size: number = 0
@@ -40,6 +40,9 @@ class SinglyLinkedList {
    * @returns 
    */
   pushToTail(value: any){
+    //If empty list
+    if(this.size === 0) return this.pushToHead(value)
+
     const newNode = new SinglyNode(value)
 
     this.tail.previous = newNode
@@ -87,7 +90,12 @@ class SinglyLinkedList {
    * Removes head from list
    */
   popHead(){
+    if(this.size === 0) throw Error('Singly linked list is empty')
+
     this.head = this.head.previous
+
+    if(this.size == 1) this.tail = undefined
+
     this.size--
   }
 
@@ -95,7 +103,7 @@ class SinglyLinkedList {
    * Removes tail from list
    */
   popTail(){
-    if(this.size < 0) throw Error('Singly lined list is empty')
+    if(this.size === 0) throw Error('Singly linked list is empty')
 
     if(this.size === 1){
       this.head = undefined
@@ -190,32 +198,3 @@ class SinglyLinkedList {
 
 
 }
-
-
-/*--------  Usage example  --------*/
-
-const list = new SinglyLinkedList()
-
-list.pushToHead('First')
-list.insert('Second', 1)
-
-console.log('List', list.toString(), 'Size: ', list.size)
-
-list.pushToTail("Fourht")
-list.insert("Third", 2)
-
-console.log('List', list.toString(), 'Size: ', list.size)
-
-console.log("Item 2: ", list.search(2))
-
-list.popHead()
-console.log('List', list.toString(), 'Size: ', list.size)
-
-list.delete(list.size-1)
-console.log('List', list.toString(), 'Size: ', list.size)
-
-list.popTail()
-console.log('List', list.toString(), 'Size: ', list.size)
-
-list.popTail()
-console.log('List', list.toString(), 'Size: ', list.size)
