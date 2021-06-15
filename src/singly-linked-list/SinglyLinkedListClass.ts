@@ -1,6 +1,6 @@
 class SinglyNode {
   value: any
-  previous: SinglyNode = undefined
+  next: SinglyNode = undefined
 
   constructor(value: any){
     this.value =  value
@@ -23,7 +23,7 @@ export class SinglyLinkedList {
   pushToHead(value: any){
     const newNode = new SinglyNode(value)
 
-    newNode.previous = this.head
+    newNode.next = this.head
 
     this.head = newNode
 
@@ -45,7 +45,7 @@ export class SinglyLinkedList {
 
     const newNode = new SinglyNode(value)
 
-    this.tail.previous = newNode
+    this.tail.next = newNode
 
     this.tail = newNode
 
@@ -76,12 +76,12 @@ export class SinglyLinkedList {
     for (let i = 0; i < this.size; i++) {
       if(i === (index - 1)) break
       
-      node = node.previous
+      node = node.next
     }
     
     const newNode = new SinglyNode(value)
-    newNode.previous = node.previous
-    node.previous = newNode
+    newNode.next = node.next
+    node.next = newNode
     this.size++
     
   }
@@ -92,7 +92,7 @@ export class SinglyLinkedList {
   popHead(){
     if(this.size === 0) throw Error('Singly linked list is empty')
 
-    this.head = this.head.previous
+    this.head = this.head.next
 
     if(this.size == 1) this.tail = undefined
 
@@ -117,11 +117,11 @@ export class SinglyLinkedList {
 
     //Stops 1 node before required index
     while(position < (this.size - 2)){
-      node = node.previous
+      node = node.next
       position++
     }
     
-    node.previous = undefined
+    node.next = undefined
     this.tail = node
     
     this.size--
@@ -144,11 +144,11 @@ export class SinglyLinkedList {
 
     //Stops 1 node before required index
     while(position < (index - 1)){
-      node = node.previous
+      node = node.next
       position++
     }
     
-    node.previous = node.previous.previous
+    node.next = node.next.next
     this.size--
   }
 
@@ -164,7 +164,7 @@ export class SinglyLinkedList {
     let position = 0
 
     while(position < index){
-      node = node.previous
+      node = node.next
       position++
     }
 
@@ -188,9 +188,9 @@ export class SinglyLinkedList {
     while(flag){
       string+= ` | ${node.value}`
 
-      if(!node.previous) flag = false
+      if(!node.next) flag = false
 
-      node = node.previous
+      node = node.next
     }
 
     return string

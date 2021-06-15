@@ -27,7 +27,7 @@ describe("Singly Linked List tests", () => {
   
       expect(list.size).toEqual(1);
       expect(list.head.value).toBe("First");
-      expect(list.head.previous).not.toBeDefined();
+      expect(list.head.next).not.toBeDefined();
     })
   
     test("Push to tail (2 items)", () => {
@@ -44,7 +44,7 @@ describe("Singly Linked List tests", () => {
   
       expect(list.size).toEqual(1);
       expect(list.head.value).toBe("First");
-      expect(list.head.previous).not.toBeDefined();
+      expect(list.head.next).not.toBeDefined();
     })
   
     test("Push to head (2 items)", () => {
