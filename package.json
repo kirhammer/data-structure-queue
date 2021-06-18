@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compile": "./node_modules/.bin/babel --extensions '.ts' src --out-dir lib",
-    "test": "jest --verbose --coverage ./tests/singly-linked-list.test.ts",
+    "test": "jest --verbose --coverage ./tests/doubly-linked-list.test.ts",
     "example-class": "tsc src/queue-class/example.ts -outDir compiled/queue-class && node compiled/queue-class/example.js",
     "example-function": "tsc src/queue-function/example.ts -outDir compiled/queue-function && node compiled/queue-function/example.js"
   },
